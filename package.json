@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "proto-gen": "proto-gen.sh",
-    "start": "ts-node ./server",
-    "client": "ts-node ./client",
+    "start": "ts-node src/server",
+    "client": "ts-node src/client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

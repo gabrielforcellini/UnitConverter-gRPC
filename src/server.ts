@@ -2,8 +2,8 @@ import path from 'path'
 import * as grpc from '@grpc/grpc-js'
 import * as protoLoader from '@grpc/proto-loader'
 import 'dotenv/config'
-import { ProtoGrpcType } from './proto/conversion'
-import { TemperatureServiceHandlers } from './proto/conversionPackage/TemperatureService'
+import { ProtoGrpcType } from '../src/proto/conversion'
+import { TemperatureServiceHandlers } from '../src/proto/conversionPackage/TemperatureService'
 
 const PORT = process.env.SERVER_PORT;
 const HOST = process.env.SERVER_HOST;

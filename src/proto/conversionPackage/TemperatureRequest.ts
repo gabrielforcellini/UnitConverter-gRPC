@@ -1,4 +1,4 @@
-// Original file: proto/conversion.proto
+// Original file: src/proto/conversion.proto
 
 
 export interface TemperatureRequest {
