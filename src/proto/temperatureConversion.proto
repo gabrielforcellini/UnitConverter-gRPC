@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package temperatureConversionPackage;
+
+service CelsiusToFahrenheit {
+  rpc CelsiusToFahrenheit (CelsiusToFahrenheitRequest) returns (CelsiusToFahrenheitResponse);
+}
+
+message CelsiusToFahrenheitRequest {
+  double celsius = 1;
+}
+
+message CelsiusToFahrenheitResponse {
+  double fahrenheit = 1;
+}
+
+service CelsiusToKelvin {
+  rpc CelsiusToKelvin (CelsiusToKelvinRequest) returns (CelsiusToKelvinResponse);
+}
+
+message CelsiusToKelvinRequest {
+  double celsius = 1;
+}
+
+message CelsiusToKelvinResponse {
+  double kelvin = 1;
+}

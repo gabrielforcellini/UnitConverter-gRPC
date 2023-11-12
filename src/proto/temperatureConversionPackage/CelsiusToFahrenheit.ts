@@ -1,0 +1,27 @@
+// Original file: src/proto/TemperatureConversion.proto
+
+import type * as grpc from '@grpc/grpc-js'
+import type { MethodDefinition } from '@grpc/proto-loader'
+import type { CelsiusToFahrenheitRequest as _temperatureConversionPackage_CelsiusToFahrenheitRequest, CelsiusToFahrenheitRequest__Output as _temperatureConversionPackage_CelsiusToFahrenheitRequest__Output } from '../temperatureConversionPackage/CelsiusToFahrenheitRequest';
+import type { CelsiusToFahrenheitResponse as _temperatureConversionPackage_CelsiusToFahrenheitResponse, CelsiusToFahrenheitResponse__Output as _temperatureConversionPackage_CelsiusToFahrenheitResponse__Output } from '../temperatureConversionPackage/CelsiusToFahrenheitResponse';
+
+export interface CelsiusToFahrenheitClient extends grpc.Client {
+  CelsiusToFahrenheit(argument: _temperatureConversionPackage_CelsiusToFahrenheitRequest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_temperatureConversionPackage_CelsiusToFahrenheitResponse__Output>): grpc.ClientUnaryCall;
+  CelsiusToFahrenheit(argument: _temperatureConversionPackage_CelsiusToFahrenheitRequest, metadata: grpc.Metadata, callback: grpc.requestCallback<_temperatureConversionPackage_CelsiusToFahrenheitResponse__Output>): grpc.ClientUnaryCall;
+  CelsiusToFahrenheit(argument: _temperatureConversionPackage_CelsiusToFahrenheitRequest, options: grpc.CallOptions, callback: grpc.requestCallback<_temperatureConversionPackage_CelsiusToFahrenheitResponse__Output>): grpc.ClientUnaryCall;
+  CelsiusToFahrenheit(argument: _temperatureConversionPackage_CelsiusToFahrenheitRequest, callback: grpc.requestCallback<_temperatureConversionPackage_CelsiusToFahrenheitResponse__Output>): grpc.ClientUnaryCall;
+  celsiusToFahrenheit(argument: _temperatureConversionPackage_CelsiusToFahrenheitRequest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_temperatureConversionPackage_CelsiusToFahrenheitResponse__Output>): grpc.ClientUnaryCall;
+  celsiusToFahrenheit(argument: _temperatureConversionPackage_CelsiusToFahrenheitRequest, metadata: grpc.Metadata, callback: grpc.requestCallback<_temperatureConversionPackage_CelsiusToFahrenheitResponse__Output>): grpc.ClientUnaryCall;
+  celsiusToFahrenheit(argument: _temperatureConversionPackage_CelsiusToFahrenheitRequest, options: grpc.CallOptions, callback: grpc.requestCallback<_temperatureConversionPackage_CelsiusToFahrenheitResponse__Output>): grpc.ClientUnaryCall;
+  celsiusToFahrenheit(argument: _temperatureConversionPackage_CelsiusToFahrenheitRequest, callback: grpc.requestCallback<_temperatureConversionPackage_CelsiusToFahrenheitResponse__Output>): grpc.ClientUnaryCall;
+  
+}
+
+export interface CelsiusToFahrenheitHandlers extends grpc.UntypedServiceImplementation {
+  CelsiusToFahrenheit: grpc.handleUnaryCall<_temperatureConversionPackage_CelsiusToFahrenheitRequest__Output, _temperatureConversionPackage_CelsiusToFahrenheitResponse>;
+  
+}
+
+export interface CelsiusToFahrenheitDefinition extends grpc.ServiceDefinition {
+  CelsiusToFahrenheit: MethodDefinition<_temperatureConversionPackage_CelsiusToFahrenheitRequest, _temperatureConversionPackage_CelsiusToFahrenheitResponse, _temperatureConversionPackage_CelsiusToFahrenheitRequest__Output, _temperatureConversionPackage_CelsiusToFahrenheitResponse__Output>
+}

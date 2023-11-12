@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package dimensionConversionPackage;
+
+service MeterToKilometer {
+  rpc MeterToKilometer (MeterToKilometerRequest) returns (MeterToKilometerResponse);
+}
+
+message MeterToKilometerRequest {
+  double meter = 1;
+}
+
+message MeterToKilometerResponse {
+  double kilometer = 1;
+}
+
+service KilometerToMile {
+  rpc KilometerToMile (KilometerToMileRequest) returns (KilometerToMileResponse);
+}
+
+message KilometerToMileRequest {
+  double kilometer = 1;
+}
+
+message KilometerToMileResponse {
+  double mile = 1;
+}
+
+service InchToCentimeter {
+  rpc InchToCentimeter (InchToCentimeterRequest) returns (InchToCentimeterResponse);
+}
+
+message InchToCentimeterRequest {
+  double inch = 1;
+}
+
+message InchToCentimeterResponse {
+  double centimeter = 1;
+}
