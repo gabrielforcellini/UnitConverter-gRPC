@@ -7,6 +7,7 @@ import { ProtoGrpcType as ProtoGrpcDimensionType } from './proto/dimensionConver
 import { CelsiusToFahrenheitHandlers } from './proto/temperatureConversionPackage/CelsiusToFahrenheit'
 import { CelsiusToKelvinHandlers } from './proto/temperatureConversionPackage/CelsiusToKelvin'
 import { InchToCentimeterHandlers } from './proto/dimensionConversionPackage/InchToCentimeter'
+import { MeterToKilometerHandlers } from './proto/dimensionConversionPackage/MeterToKilometer'
 
 const PORT = process.env.SERVER_PORT;
 const HOST = process.env.SERVER_HOST;
@@ -38,22 +39,24 @@ function main() {
 function getServer() {
   const server = new grpc.Server()
   server.addService(conversionService.CelsiusToFahrenheit.service, {
-    "CelsiusToFahrenheit": (req, res) => {
-      console.log(req, res);
+    CelsiusToFahrenheit: (req, res) => {
+      console.log(req.request);
+      res(null, { fahrenheit: 10.0 })
     }
   } as CelsiusToFahrenheitHandlers)
 
   server.addService(conversionService.CelsiusToKelvin.service, {
-    "CelsiusToKelvin": (req, res) => {
+    CelsiusToKelvin: (req, res) => {
       console.log(req, res);
     }
   } as CelsiusToKelvinHandlers)
 
-  server.addService(dimensionService.InchToCentimeter.service, {
-    "InchToCentimeter": (req, res) => {
-      console.log(req, res);      
+  server.addService(dimensionService.MeterToKilometer.service, {
+    MeterToKilometer: (req, res) => {
+      console.log(req.request);
+      res(null, { kilometer: 12.0 })
     }
-  } as InchToCentimeterHandlers)
+  } as MeterToKilometerHandlers)
 
   return server
 }
