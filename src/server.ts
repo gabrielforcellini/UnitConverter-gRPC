@@ -9,8 +9,8 @@ import { CelsiusToKelvinHandlers } from './proto/temperatureConversionPackage/Ce
 import { InchToCentimeterHandlers } from './proto/dimensionConversionPackage/InchToCentimeter'
 import { MeterToKilometerHandlers } from './proto/dimensionConversionPackage/MeterToKilometer'
 
-const PORT = process.env.SERVER_PORT || '50051';
-const HOST = process.env.SERVER_HOST || 'localhost';
+const PORT = process.env.SERVER_PORT;
+const HOST = process.env.SERVER_HOST;
 const PROTO_FILE = './proto/temperatureConversion.proto'
 const PROT_DIMENSION_FILE = './proto/dimensionConversion.proto'
 
@@ -40,7 +40,6 @@ function getServer() {
   const server = new grpc.Server()
   server.addService(conversionService.CelsiusToFahrenheit.service, {
     CelsiusToFahrenheit: (req, res) => {
-      console.log(req.request);
       const celsius = req.request.celsius;
       const calc = (9/5) * celsius + 32;
       res(null, { fahrenheit: calc})
@@ -57,7 +56,6 @@ function getServer() {
 
   server.addService(dimensionService.MeterToKilometer.service, {
     MeterToKilometer: (req, res) => {
-      console.log(req.request);
       const meter = req.request.meter;
       const calc = meter / 1000;
       res(null, { kilometer: calc })
@@ -66,7 +64,6 @@ function getServer() {
 
   server.addService(dimensionService.InchToCentimeter.service, {
     InchToCentimeter: (req, res) => {
-      console.log(req.request);
       const inch = req.request.inch;
       const calc = inch * 2.54;
       res(null, { centimeter : calc })

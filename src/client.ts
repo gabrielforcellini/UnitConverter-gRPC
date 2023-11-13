@@ -5,8 +5,8 @@ import 'dotenv/config'
 import { ProtoGrpcType } from '../src/proto/TemperatureConversion'
 import { ProtoGrpcType as ProtoGrpcDimensionType } from './proto/dimensionConversion'
 
-const PORT = process.env.SERVER_PORT || '50051';
-const HOST = process.env.SERVER_HOST || 'localhost';
+const PORT = process.env.SERVER_PORT;
+const HOST = process.env.SERVER_HOST;
 const PROTO_FILE = './proto/temperatureConversion.proto'
 const PROT_DIMENSION_FILE = './proto/dimensionConversion.proto'
 
