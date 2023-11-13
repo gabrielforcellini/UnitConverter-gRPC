@@ -2,11 +2,11 @@ import path from 'path'
 import * as grpc from '@grpc/grpc-js'
 import * as protoLoader from '@grpc/proto-loader'
 import 'dotenv/config'
-import { ProtoGrpcType } from '../src/proto/temperatureConversion'
+import { ProtoGrpcType } from '../src/proto/TemperatureConversion'
 import { ProtoGrpcType as ProtoGrpcDimensionType } from './proto/dimensionConversion'
 
-const PORT = process.env.SERVER_PORT;
-const HOST = process.env.SERVER_HOST;
+const PORT = process.env.SERVER_PORT || '50051';
+const HOST = process.env.SERVER_HOST || 'localhost';
 const PROTO_FILE = './proto/temperatureConversion.proto'
 const PROT_DIMENSION_FILE = './proto/dimensionConversion.proto'
 
@@ -27,26 +27,21 @@ const MeterToKilometer = new grpcDimensionObj.dimensionConversionPackage.MeterTo
   `${HOST}:${PORT}`, grpc.credentials.createInsecure()
 )
 
-CelsiusToFahrenheit.CelsiusToFahrenheit({ celsius: 1 }, (err, result) => {
-  if (err) {
-    console.error(err);
-    return
-  }
-  console.log(result);
-})
+const InchToCentimeter = new grpcDimensionObj.dimensionConversionPackage.InchToCentimeter(
+  `${HOST}:${PORT}`, grpc.credentials.createInsecure()
+)
 
-CelsiusToKelvin.CelsiusToKelvin({ celsius: 1 }, (err, result) => {
-  if (err) {
-    console.error(err);
-    return
-  }
-  console.log(result);
-})
+function callService(call: any, service: any, methodName: string) {
+  service[methodName](call, (err: any, result: any) => {
+    if (err) {
+      console.error(`Error in ${methodName}:`, err);
+      return;
+    }
+    console.log(`Result of ${methodName}:`, result);
+  });
+}
 
-MeterToKilometer.MeterToKilometer({ meter: 1 }, (err, result) => {
-  if (err) {
-    console.error(err);
-    return
-  }
-  console.log(result);
-})
+callService({ celsius: 25 }, CelsiusToFahrenheit, 'CelsiusToFahrenheit');
+callService({ celsius: 125}, CelsiusToKelvin, 'CelsiusToKelvin');
+callService({ meter: 12 }, MeterToKilometer, 'MeterToKilometer');
+callService({ inch: 25 }, InchToCentimeter, 'InchToCentimeter');
